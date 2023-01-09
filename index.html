@@ -7,251 +7,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <title>Timetable</title>
+  <script type= "module"src="app.js" defer></script>
 </head>
 
 <body>
   <div class="app">
+    <div class="timeline"></div>
 
     <div class="gutter">
-      <div class="gutter__label">7</div>
-      <div class="gutter__label">8</div>
-      <div class="gutter__label">9</div>
-      <div class="gutter__label">10</div>
-      <div class="gutter__label">12</div>
-      <div class="gutter__label">13</div>
-      <div class="gutter__label">14</div>
-      <div class="gutter__label">15</div>
-      <div class="gutter__label">16</div>
-      <div class="gutter__label">17</div>
-      <div class="gutter__label">18</div>
-      <div class="gutter__label">19</div>
-      <div class="gutter__label">20</div>
-      <div class="gutter__label">21</div>
-      <div class="gutter__label">22</div>
+      <ul class="gutter__list">
+        {% for hour in hours %}
+          <li class="gutter__item">
+            {{ hour }}
+          </li>
+        {% endfor %}
+      </ul>
     </div>
 
-    <div class="day weekday monday">
-      <div class="day__name">
-        Понедельник
-      </div>
-      <div class="day__agenda">
-        <div class="card" style="height: calc(var(--m) * 60); background-color: lightpink">
-          Чтение
-        </div>
-        <div class="card" style="height: calc(var(--m) * 45); background-color: cornflowerblue;">
-          Тренировка
-        </div>
-        <div class="card" style="height: calc(var(--m) * 15)"></div>
-        <div class="card" style="height: calc(var(--m) * 60 * 4); background-color: sandybrown;">
-          Web dev study
-        </div>
-        <div class="card" style="height: calc(var(--m) * 60)"></div>
-        <div class="card" style="height: calc(var(--m) * 60 * 4); background-color: salmon;">
-          English
-        </div>
-        <div class="card" style="height: calc(var(--m) * 45); background-color: cornflowerblue;">
-          Тренировка
-        </div>
-        <div class="card" style="height: calc(var(--m) * 15)"></div>
-        <div class="card" style="height: calc(var(--m) * 60); background-color: lightseagreen;">
-          Рисование
-        </div>
-        <div class="card" style="height: calc(var(--m) * 60 * 2); background-color: lightpink">
-          Чтение
-        </div>
-      </div>
-    </div>
-
-    <div class="day weekday tuesday">
-      <div class="day__name">
-        Вторник
-      </div>
-      <div class="day__agenda">
-        <div class="card" style="height: calc(var(--m) * 60); background-color: lightpink">
-          Чтение
-        </div>
-        <div class="card" style="height: calc(var(--m) * 45); background-color: cornflowerblue;">
-          Тренировка
-        </div>
-        <div class="card" style="height: calc(var(--m) * 15)"></div>
-        <div class="card" style="height: calc(var(--m) * 60 * 4); background-color: sandybrown;">
-          Web dev study
-        </div>
-        <div class="card" style="height: calc(var(--m) * 60)"></div>
-        <div class="card" style="height: calc(var(--m) * 60 * 4); background-color: salmon;">
-          English
-        </div>
-        <div class="card" style="height: calc(var(--m) * 45); background-color: cornflowerblue;">
-          Тренировка
-        </div>
-        <div class="card" style="height: calc(var(--m) * 15)"></div>
-        <div class="card" style="height: calc(var(--m) * 60); background-color: lightseagreen;">
-          Рисование
-        </div>
-        <div class="card" style="height: calc(var(--m) * 60 * 2); background-color: lightpink">
-          Чтение
-        </div>
-      </div>
-    </div>
-
-    <div class="day weekday wednesday">
-      <div class="day__name">
-        Среда
-      </div>
-      <div class="day__agenda">
-        <div class="card" style="height: calc(var(--m) * 60); background-color: lightpink">
-          Чтение
-        </div>
-        <div class="card" style="height: calc(var(--m) * 45); background-color: cornflowerblue;">
-          Тренировка
-        </div>
-        <div class="card" style="height: calc(var(--m) * 15)"></div>
-        <div class="card" style="height: calc(var(--m) * 60 * 4); background-color: sandybrown;">
-          Web dev study
-        </div>
-        <div class="card" style="height: calc(var(--m) * 60)"></div>
-        <div class="card" style="height: calc(var(--m) * 60 * 4); background-color: salmon;">
-          English
-        </div>
-        <div class="card" style="height: calc(var(--m) * 45); background-color: cornflowerblue;">
-          Тренировка
-        </div>
-        <div class="card" style="height: calc(var(--m) * 15)"></div>
-        <div class="card" style="height: calc(var(--m) * 60); background-color: lightseagreen;">
-          Рисование
-        </div>
-        <div class="card" style="height: calc(var(--m) * 60 * 2); background-color: lightpink">
-          Чтение
-        </div>
-      </div>
-    </div>
-
-    <div class="day weekday thursday">
-      <div class="day__name">
-        Четверг
-      </div>
-      <div class="day__agenda">
-        <div class="card" style="height: calc(var(--m) * 60); background-color: lightpink">
-          Чтение
-        </div>
-        <div class="card" style="height: calc(var(--m) * 45); background-color: cornflowerblue;">
-          Тренировка
-        </div>
-        <div class="card" style="height: calc(var(--m) * 15)"></div>
-        <div class="card" style="height: calc(var(--m) * 60 * 4); background-color: sandybrown;">
-          Web dev study
-        </div>
-        <div class="card" style="height: calc(var(--m) * 60)"></div>
-        <div class="card" style="height: calc(var(--m) * 60 * 4); background-color: salmon;">
-          English
-        </div>
-        <div class="card" style="height: calc(var(--m) * 45); background-color: cornflowerblue;">
-          Тренировка
-        </div>
-        <div class="card" style="height: calc(var(--m) * 15)"></div>
-        <div class="card" style="height: calc(var(--m) * 60); background-color: lightseagreen;">
-          Рисование
-        </div>
-        <div class="card" style="height: calc(var(--m) * 60 * 2); background-color: lightpink">
-          Чтение
-        </div>
-      </div>
-    </div>
-
-    <div class="day weekday friday">
-      <div class="day__name">
-        Пятница
-      </div>
-      <div class="day__agenda">
-        <div class="card" style="height: calc(var(--m) * 60); background-color: lightpink">
-          Чтение
-        </div>
-        <div class="card" style="height: calc(var(--m) * 45); background-color: cornflowerblue;">
-          Тренировка
-        </div>
-        <div class="card" style="height: calc(var(--m) * 15)"></div>
-        <div class="card" style="height: calc(var(--m) * 60 * 4); background-color: sandybrown;">
-          Web dev study
-        </div>
-        <div class="card" style="height: calc(var(--m) * 60)"></div>
-        <div class="card" style="height: calc(var(--m) * 60 * 4); background-color: salmon;">
-          English
-        </div>
-        <div class="card" style="height: calc(var(--m) * 45); background-color: cornflowerblue;">
-          Тренировка
-        </div>
-        <div class="card" style="height: calc(var(--m) * 15)"></div>
-        <div class="card" style="height: calc(var(--m) * 60); background-color: lightseagreen;">
-          Рисование
-        </div>
-        <div class="card" style="height: calc(var(--m) * 60 * 2); background-color: lightpink">
-          Чтение
-        </div>
-      </div>
-    </div>
-
-    <div class="day weekend saturday">
-      <div class="day__name">
-        Суббота
-      </div>
-      <div class="day__agenda">
-        <div class="card" style="height: calc(var(--m) * 60); background-color: lightpink">
-          Чтение
-        </div>
-        <div class="card" style="height: calc(var(--m) * 45); background-color: cornflowerblue;">
-          Тренировка
-        </div>
-        <div class="card" style="height: calc(var(--m) * 15)"></div>
-        <div class="card" style="height: calc(var(--m) * 60 * 4); background-color: sandybrown;">
-          Web dev study
-        </div>
-        <div class="card" style="height: calc(var(--m) * 60)"></div>
-        <div class="card" style="height: calc(var(--m) * 60 * 4); background-color: salmon;">
-          English
-        </div>
-        <div class="card" style="height: calc(var(--m) * 45); background-color: cornflowerblue;">
-          Тренировка
-        </div>
-        <div class="card" style="height: calc(var(--m) * 15)"></div>
-        <div class="card" style="height: calc(var(--m) * 60); background-color: lightseagreen;">
-          Рисование
-        </div>
-        <div class="card" style="height: calc(var(--m) * 60 * 2); background-color: lightpink">
-          Чтение
-        </div>
-      </div>
-    </div>
-
-    <div class="day weekend sunday">
-      <div class="day__name">
-        Воскресенье
-      </div>
-      <div class="day__agenda">
-        <div class="card" style="height: calc(var(--m) * 60); background-color: lightpink">
-          Чтение
-        </div>
-        <div class="card" style="height: calc(var(--m) * 45); background-color: cornflowerblue;">
-          Тренировка
-        </div>
-        <div class="card" style="height: calc(var(--m) * 15)"></div>
-        <div class="card" style="height: calc(var(--m) * 60 * 4); background-color: sandybrown;">
-          Web dev study
-        </div>
-        <div class="card" style="height: calc(var(--m) * 60)"></div>
-        <div class="card" style="height: calc(var(--m) * 60 * 4); background-color: salmon;">
-          English
-        </div>
-        <div class="card" style="height: calc(var(--m) * 45); background-color: cornflowerblue;">
-          Тренировка
-        </div>
-        <div class="card" style="height: calc(var(--m) * 15)"></div>
-        <div class="card" style="height: calc(var(--m) * 60); background-color: lightseagreen;">
-          Рисование
-        </div>
-        <div class="card" style="height: calc(var(--m) * 60 * 2); background-color: lightpink">
-          Чтение
-        </div>
-      </div>
+    <div class="week">
+      <ul class="week__list">
+        {% for name, day in week %}
+          <li class="week__item">
+            <div class="day {{ name }}">
+              <div class="day__title">
+                {{ day.title }}
+              </div>
+              <div class="day__agenda">
+                {% for event in day.agenda %}
+                  <div
+                    class="card"
+                    style="
+                      top: calc(var(--m) * (({{ event.start }} - 7) * 60));
+                      height: calc(var(--m) * (60 * ({{ event.end }} - {{ event.start }})));
+                      width: 100%;
+                      background-color: {{ event.color }};
+                    "
+                  >
+                    {{ event.title }}
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
     </div>
 
   </div>
