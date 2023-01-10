@@ -38,6 +38,7 @@ body,
 .gutter__item {
   flex: 1;
   text-align: center;
+  border-bottom: 1px solid gray;
 }
 
 .week {

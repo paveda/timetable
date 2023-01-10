@@ -1,0 +1,25 @@
+{
+  "name": "timetable",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paveda/timetable.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paveda/timetable/issues"
+  },
+  "homepage": "https://github.com/paveda/timetable#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "nunjucks": "^3.2.3"
+  }
+}
