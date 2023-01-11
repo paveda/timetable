@@ -20,6 +20,7 @@
   "homepage": "https://github.com/paveda/timetable#readme",
   "devDependencies": {
     "gulp": "^4.0.2",
-    "nunjucks": "^3.2.3"
+    "nunjucks": "^3.2.3",
+    "prettier": "^2.8.2"
   }
 }

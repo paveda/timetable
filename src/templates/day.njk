@@ -1,9 +1,13 @@
 <div class="day {{ day.name }}">
+
   <div class="day__title">
     {{ day.title }}
-  </div class="day__agenda">
+  </div>
+
+  <div class="day__agenda">
     {% for event in events %}
       {{ event | safe }}
     {% endfor %}
   </div>
+
 </div>

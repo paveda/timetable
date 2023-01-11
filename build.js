@@ -2,27 +2,23 @@
 
 // @ts-check
 
-import { resolve, join } from 'node:path'
-import { readFile, readdir, writeFile, mkdir } from 'node:fs/promises'
+import { join } from 'node:path'
+import { writeFile, mkdir } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
 import nunjucks from 'nunjucks'
-import settings from './data/settings.js'
+import { formatHtml, loadDirFileNames, loadTemplates } from './scripts'
+import { PATH } from './scripts'
 
-nunjucks.configure({ autoescape: true })
+nunjucks.configure('./src/templates', { autoescape: true })
 
 /**
- * =============
- * Resolve paths
- * =============
+ * ============
+ * Resolve Data 
+ * ============
  */
-const OUT_PATH = resolve('./build')
-const DATA_PATH = resolve('./data/')
-const WEEKS_PATH = join(DATA_PATH, 'weeks')
-const EVENTS_PATH = join(DATA_PATH, 'events')
-const TEMPLATES_PATH = resolve('./src/templates/')
 
-const weekBasenames = await readdir(WEEKS_PATH)
-const eventBaseames = await readdir(EVENTS_PATH)
+const weekFileNames = await loadDirFileNames(PATH.WEEKS_DIR)
+const eventFileNames = await loadDirFileNames(PATH.EVENTS_DIR)
 
 /**
  * ==============
@@ -30,10 +26,7 @@ const eventBaseames = await readdir(EVENTS_PATH)
  * ==============
  */
 
-const pageTemplate = await readFile(join(TEMPLATES_PATH, 'page.njk'), 'utf-8')
-const weekTemplate = await readFile(join(TEMPLATES_PATH, 'week.njk'), 'utf-8')
-const dayTemplate = await readFile(join(TEMPLATES_PATH, 'day.njk'), 'utf-8')
-const eventTemplate = await readFile(join(TEMPLATES_PATH, 'event.njk'), 'utf-8')
+const templates = loadTemplates()
 
 /**
  * =========
@@ -41,23 +34,9 @@ const eventTemplate = await readFile(join(TEMPLATES_PATH, 'event.njk'), 'utf-8')
  * =========
  */
 
-const eventsDataMap = new Map()
-
-for (const basename of eventBaseames) {
-  const module = await import(resolve(EVENTS_PATH, basename))
-  const eventName = basename.split('.')[0]
-
-  eventsDataMap.set(eventName, module.default)
-}
-
+const eventsDataMap = new Ma
 const weeksDataMap = new Map()
 
-for (const basename of weekBasenames) {
-  const module = await import(resolve(WEEKS_PATH, basename))
-  const weekName = basename.split('.')[0]
-
-  weeksDataMap.set(weekName, module.default)
-}
 
 /**
  * ============
@@ -133,5 +112,6 @@ for (const [name, weekHtml] of renderedWeeks) {
       week: weekHtml,
     }
   )
-  await writeFile(join(OUT_PATH, name + '.html'), pageHtml)
+
+  await writeFile(join(OUT_PATH, name + '.html'), formatHtml(pageHtml))
 }

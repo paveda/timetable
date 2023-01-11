@@ -14,7 +14,7 @@
       <ul>
         {% for page in pages %}
           <li>
-            <a href="{{ page }}.html">{{ page }}</a>
+            <a href="{{ page }}.html">{{ page | capitalize }}</a>
           </li>
         {% endfor %}
       </ul>
@@ -22,7 +22,7 @@
 
     <div class="timeline"></div>
 
-    {{ gutter | safe }}
+    {# {{ gutter | safe }} #}
 
     {{ week | safe }}
 
