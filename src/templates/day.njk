@@ -2,7 +2,7 @@
   <div class="day__title">
     {{ day.title }}
   </div class="day__agenda">
-    {% for event in day.events %}
+    {% for event in events %}
       {{ event | safe }}
     {% endfor %}
   </div>

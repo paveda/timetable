@@ -1,7 +1,9 @@
-<ul class="week__list">
-  {% for name, day in week %}
-    <li class="week__item">
-      {{ }}
-    </li>
-  {% endfor %}
-</ul>
+<div class="week">
+  <ul class="week__list">
+    {% for day in days %}
+      <li class="week__item">
+        {{ day | safe }}
+      </li>
+    {% endfor %}
+  </ul>
+<div>

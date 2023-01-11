@@ -41,10 +41,19 @@ const eventTemplate = await readFile(join(TEMPLATES_PATH, 'event.njk'), 'utf-8')
  * =========
  */
 
+const eventsDataMap = new Map()
+
+for (const basename of eventBaseames) {
+  const module = await import(resolve(EVENTS_PATH, basename))
+  const eventName = basename.split('.')[0]
+
+  eventsDataMap.set(eventName, module.default)
+}
+
 const weeksDataMap = new Map()
 
-for await (const basename of weekBasenames) {
-  const module = await import(resolve('./data/weeks', basename))
+for (const basename of weekBasenames) {
+  const module = await import(resolve(WEEKS_PATH, basename))
   const weekName = basename.split('.')[0]
 
   weeksDataMap.set(weekName, module.default)
@@ -57,22 +66,44 @@ for await (const basename of weekBasenames) {
  */
 const renderedWeeks = new Map()
 
-for (const [weekName, weekData] of weekData) {
+for (const [weekName, weekData] of weeksDataMap) {
   /**
    * ===========
    * Render days
    * ===========
    */
+  const renderedDays = []
+
   for (const [dayName, dayData] of Object.entries(weekData)) {
-    
+    /**
+     * =================
+     * Render day events
+     * =================
+     */
+    const renderedEvents = dayData.events?.map((event) => {
+      return nunjucks.renderString(
+        eventTemplate,
+        { event }
+      )
+    })
+
+    const renderedDay = nunjucks.renderString(
+      dayTemplate,
+      {
+        day: {
+          name: dayName,
+          title: dayData.title,
+        },
+        events: renderedEvents,
+      }
+    )
+
+    renderedDays.push(renderedDay)
   }
 
   const html = nunjucks.renderString(
     weekTemplate,
-    {
-      week: weekData,
-      events,
-    }
+    { days: renderedDays }
   )
 
   renderedWeeks.set(weekName, html)
