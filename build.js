@@ -8,10 +8,13 @@ import { existsSync } from 'node:fs'
 import nunjucks from 'nunjucks'
 import settings from './data/settings.js'
 
-nunjucks.configure({
-  autoescape: true,
-})
+nunjucks.configure({ autoescape: true })
 
+/**
+ * =============
+ * Resolve paths
+ * =============
+ */
 const OUT_PATH = resolve('./build')
 const DATA_PATH = resolve('./data/')
 const WEEKS_PATH = join(DATA_PATH, 'weeks')
@@ -21,43 +24,59 @@ const TEMPLATES_PATH = resolve('./src/templates/')
 const weekBasenames = await readdir(WEEKS_PATH)
 const eventBaseames = await readdir(EVENTS_PATH)
 
-const pageTemplate = await readFile(join(TEMPLATES_PATH, 'index.njk'), 'utf-8')
-const weekTemplate = await readFile(join(TEMPLATES_PATH, 'week.njk'), 'utf-8')
-const agendaTemplate = await readFile(join(TEMPLATES_PATH, 'agenda.njk'), 'utf-8')
+/**
+ * ==============
+ * Load templates
+ * ==============
+ */
 
-const weekData = new Map()
+const pageTemplate = await readFile(join(TEMPLATES_PATH, 'page.njk'), 'utf-8')
+const weekTemplate = await readFile(join(TEMPLATES_PATH, 'week.njk'), 'utf-8')
+const dayTemplate = await readFile(join(TEMPLATES_PATH, 'day.njk'), 'utf-8')
+const eventTemplate = await readFile(join(TEMPLATES_PATH, 'event.njk'), 'utf-8')
+
+/**
+ * =========
+ * Load data
+ * =========
+ */
+
+const weeksDataMap = new Map()
 
 for await (const basename of weekBasenames) {
   const module = await import(resolve('./data/weeks', basename))
   const weekName = basename.split('.')[0]
 
-  weekData.set(weekName, module.default)
+  weeksDataMap.set(weekName, module.default)
 }
-
-// console.dir(weekData)
-// console.dir(weekNames)
-// console.dir(weekTemplate)
 
 /**
  * ============
  * Render weeks
  * ============
  */
-
 const renderedWeeks = new Map()
 
-for (const [name, data] of weekData) {
+for (const [weekName, weekData] of weekData) {
+  /**
+   * ===========
+   * Render days
+   * ===========
+   */
+  for (const [dayName, dayData] of Object.entries(weekData)) {
+    
+  }
+
   const html = nunjucks.renderString(
     weekTemplate,
     {
-      week: data,
+      week: weekData,
+      events,
     }
   )
 
-  renderedWeeks.set(name, html)
+  renderedWeeks.set(weekName, html)
 }
-
-// console.dir(renderedWeeks)
 
 /**
  * ===================================

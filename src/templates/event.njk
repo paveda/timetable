@@ -1,15 +1,11 @@
-<div class="day__agenda">
-  {% for event in events %}
-    <div
-      class="event"
-      style="
-        top: calc(var(--m) * (({{ event.start }} - 7) * 60));
-        height: calc(var(--m) * (60 * ({{ event.end }} - {{ event.start }})));
-        width: 100%;
-        background-color: {{ event.color }};
-      "
-    >
-      {{ event.title }}
-    </div>
-  {% endfor %}
-<div>
+<div
+  class="event"
+  style="
+    top: calc(var(--m) * (({{ event.start }} - 7) * 60));
+    height: calc(var(--m) * (60 * ({{ event.end }} - {{ event.start }})));
+    width: 100%;
+    background-color: {{ event.color }};
+  "
+>
+  {{ event.title }}
+</div>

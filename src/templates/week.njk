@@ -1,13 +1,7 @@
 <ul class="week__list">
   {% for name, day in week %}
     <li class="week__item">
-      <div class="day {{ name }}">
-        <div class="day__title">
-          {{ day.title }}
-        </div>
-          {{ agenda | safe }}
-        </div>
-      </div>
+      {{ }}
     </li>
   {% endfor %}
 </ul>
