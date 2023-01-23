@@ -15,6 +15,11 @@ body,
   height: 100vh;
 }
 
+
+
+/* 
+  App
+*/
 .app {
   display: flex;
   flex-direction: column;
@@ -22,69 +27,143 @@ body,
   background-color: gray;
 }
 
+  .app__header {
+    height: 24px;
+  }
+
+
+
+/* 
+  Main Header
+*/
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: black;
+}
+  
+  .main-header__nav {
+    flex: 1;
+    padding-inline-start: 24px;
+  }
+
+
+
+/* 
+  main-nav
+*/
+.main-nav {}
+
+  .main-nav__list {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    list-style: none;
+  }
+
+  .main-nav__item {}
+
+  .main-nav__link {
+    color: white;
+    text-decoration: none;
+  }
+
+
+
+/*
+  Timetable
+*/
 .timetable {
   flex: 1;
   display: flex;
   gap: 1px;
 }
 
+
+
+/* 
+  Gutter
+*/
 .gutter {
   margin-block-start: 24px;
   background-color: whitesmoke;
   width: 24px;
 }
 
-.gutter__list {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  list-style: none;
-}
+  .gutter__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    list-style: none;
+  }
 
-.gutter__item {
-  flex: 1;
-  text-align: center;
-  border-bottom: 1px solid gray;
-}
+  .gutter__item {
+    flex: 1;
+    text-align: center;
+    border-bottom: 1px solid gray;
+  }
+
+
+
+/* 
+  Week
+*/
 
 .week {
   width: 100%;
 }
 
-.week__list {
-  display: flex;
-  justify-content: space-between;
-  gap: 1px;
-  height: 100%;
-  list-style: none;
-}
+  .week__list {
+    display: flex;
+    justify-content: space-between;
+    gap: 1px;
+    height: 100%;
+    list-style: none;
+  }
 
-.week__item {
-  flex: 1;
-  height: 100%;
-  background-color: lightgray;
-}
+  .week__item {
+    flex: 1;
+    height: 100%;
+    background-color: lightgray;
+  }
 
+
+
+/* 
+  Day
+*/
 .day {
   height: 100%;
 }
 
-.day__title {
-  height: 24px;
-  text-align: center;
-  border-bottom: 1px solid gray;
-}
+  .day__title {
+    height: 24px;
+    text-align: center;
+    border-bottom: 1px solid gray;
+  }
 
-.day__agenda {
-  position: relative;
-  height: calc(100% - 24px);
-}
+  .day__agenda {
+    position: relative;
+    height: calc(100% - 24px);
+  }
 
+
+
+/* 
+  Event
+*/
 .event {
   position: absolute;
 }
 
+
+
+/* 
+  Timeline
+*/
 .timeline {
   z-index: 100;
   position: absolute;

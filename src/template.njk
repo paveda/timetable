@@ -12,12 +12,12 @@
 <body>
   <div class="app">
 
-    <div>
-      <nav>
-        <ul class="pages__list">
+    <header class="app__header main-header">
+      <nav class="main-header__nav main-nav">
+        <ul class="main-nav__list">
           {% for page in pages %}
-            <li>
-              <a href="{{ page }}.html">
+            <li class="main-nav__item">
+              <a class="main-nav__link" href="{{ page }}.html">
                 {% if page === "index" %}
                   Main
                 {% else %}
@@ -28,13 +28,11 @@
           {% endfor %}
         </ul>
       </nav>
-    </div>
+    </header>
 
-    <div class="timeline"></div>
+    <main class="timetable">
 
-    <div class="timetable">
-
-      <div class="gutter">
+      <aside class="gutter">
         <ul class="gutter__list">
           {% for hour in range(week.timeRange[0], week.timeRange[1]) %}
             <li class="gutter__item">
@@ -42,7 +40,7 @@
             </li>
           {% endfor %}
         </ul>
-      </div>
+      </aside>
 
       <div class="week">
         <ul class="week__list">
@@ -75,7 +73,7 @@
           {% endfor %}
         </ul>
       <div>
-    </div>
+    </main>
 
   </div>
 </body>
