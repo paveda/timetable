@@ -14,14 +14,10 @@ const events = await loaddir(EVENTS_DIR, loadText)
 
 /** @type {Map<string, import('../src/types').WeekData>} */
 const weeks = await loaddir(WEEKS_DIR, loadModuleDefaultExport)
-
-console.dir(weeks)
-
 const pages = [...weeks.keys()]
-
 const template = await loadText(TEMPLATE_PATH)
 
 for (const [name, week] of weeks) {
   const html = nunjucks.renderString(template, { pages, week })
-  writeFile(join(OUT_DIR, name + '.html'), html)
+  await writeFile(join(OUT_DIR, name + '.html'), html)
 }

@@ -9,9 +9,10 @@ export default {
       agenda: [
         {
           name: 'training',
-          start: 8,
-          end: 9,
-        }
+          start: 9,
+          end: 11,
+          colour: 'lightblue'
+        },
       ]
     },
     tuesday: {

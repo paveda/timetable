@@ -54,16 +54,20 @@
                 </div>
                 <div class="day__agenda">
                   {% for event in day.agenda %}
+
                     <div
                       class="event"
                       style="
-                        top: calc(var(--m) * (({{ event.start }} - 7) * 60));
-                        height: calc(var(--m) * (60 * ({{ event.end }} - {{ event.start }})));
+                        --m: calc(100% / {{ week.timeRange[1] - week.timeRange[0] }} / 60);
+                        top: calc({{ (event.start - week.timeRange[0]) * 60 }} * var(--m));
+                        height: calc(var(--m) * (60 * {{ event.end - event.start }}));
                         width: 100%;
+                        background-color: {{ event.colour | default('green', true) }};
                       "
                     >
                       {{ event.name }}
                     </div>
+
                   {% endfor %}
                 </div>
               </div>
