@@ -8,5 +8,6 @@ import { render } from './render.js'
  * @returns {Promise<string>}
  */
 export async function renderEvent(event) {
+  console.log(event)
   return render('event', { event })
 }

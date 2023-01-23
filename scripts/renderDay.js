@@ -17,7 +17,10 @@ export async function renderDay(name, data) {
     renderedEvents = await Promise.all(data.agenda.map((event) => {
       return renderEvent(event)
     }))
+
+    console.log(renderedEvents)
   }
+
   
   const renderedDayAgenda = await render('agenda', {
     events: renderedEvents,

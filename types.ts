@@ -11,5 +11,6 @@ export type EventData = {
 }
 
 export type WeekData = {
+  timeRange: [number, number]
   days: Record<string, DayData>
 }

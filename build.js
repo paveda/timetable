@@ -1,58 +1,35 @@
 // @ts-check
 
+import { join } from 'node:path'
 import { writeFile, mkdir } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
-import { loadEvents, loadWeeks, renderWeek } from './scripts/index.js'
+import { formatHtml, loadEvents, loadWeeks, renderWeek } from './scripts/index.js'
+import { render } from './scripts/render.js'
 import { OUT_DIR } from './config/constants.js'
-
-/**
- * =========
- * Load data
- * =========
- */
 
 const events = await loadEvents()
 const weeks = await loadWeeks()
-
-// console.dir(events)
-// console.dir(weeks)
-
-/**
- * ======
- * Render
- * ======
- */
-
-/**
- * @type {Record<string, string>}
- */
-const renderedWeeks = new Map()
-
-for (const [name, data] of weeks) {
-  renderedWeeks.set(name, await renderWeek(data))
-}
-
-// console.dir(renderedWeeks)
 
 // Create out dir if it's not exists
 if (!existsSync(OUT_DIR)) {
   await mkdir(OUT_DIR)
 }
 
-// /**
-//  * ============
-//  * Render pages
-//  * ============
-//  */
+/** @type {Map<string, string>} */
+const renderedWeeks = new Map()
 
-// for (const [name, weekHtml] of renderedWeeks) {
-//   const pageHtml = nunjucks.renderString(
-//     pageTemplate,
-//     {
-//       pages: weekBasenames.map((name) => name.split('.')[0]),
-//       week: weekHtml,
-//     }
-//   )
+for (const [name, data] of weeks) {
+  renderedWeeks.set(name, await renderWeek(data))
+}
 
-//   await writeFile(join(OUT_PATH, name + '.html'), formatHtml(pageHtml))
-// }
+const pages = [...renderedWeeks.keys()]
+
+for (const [name, week] of renderedWeeks) {
+  await writeFile(
+    join(OUT_DIR, name + '.html'),
+    formatHtml(await render('page', {
+      pages,
+      week,
+    }))
+  )
+}
