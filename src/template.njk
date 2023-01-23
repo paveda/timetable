@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Timetable</title>
+</head>
+
+<body>
+  <div class="app">
+
+    <div>
+      <nav>
+        <ul class="pages__list">
+          {% for page in pages %}
+            <li>
+              <a href="{{ page }}.html">
+                {% if page === "index" %}
+                  Main
+                {% else %}
+                  {{ page | capitalize }}
+                {% endif %}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+
+    <div class="timeline"></div>
+
+    <div class="timetable">
+
+      <div class="gutter">
+        <ul class="gutter__list">
+          {% for hour in range(week.timeRange[0], week.timeRange[1]) %}
+            <li class="gutter__item">
+              {{ hour }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="week">
+        <ul class="week__list">
+          {% for name, day in week.days %}
+            <li class="week__item">
+              <div class="day {{ day.name }}">
+                <div class="day__title">
+                  {{ day.title }}
+                </div>
+                <div class="day__agenda">
+                  {% for event in day.agenda %}
+                    <div
+                      class="event"
+                      style="
+                        top: calc(var(--m) * (({{ event.start }} - 7) * 60));
+                        height: calc(var(--m) * (60 * ({{ event.end }} - {{ event.start }})));
+                        width: 100%;
+                      "
+                    >
+                      {{ event.name }}
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      <div>
+    </div>
+
+  </div>
+</body>
+
+</html>

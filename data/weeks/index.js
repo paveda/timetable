@@ -1,6 +1,6 @@
 // @ts-check
 
-/** @type {import('../../types').WeekData} */
+/** @type {import('../../src/types').WeekData} */
 export default {
   timeRange: [7, 23],
   days: {
@@ -27,7 +27,7 @@ export default {
       agenda: [],
     },
     friday: {
-      title: 'Пятница'
+      title: 'Пятница',
       agenda: [],
     },
     suturday: {

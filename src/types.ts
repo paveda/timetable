@@ -1,5 +1,4 @@
 export type DayData = {
-  name: string
   title: string
   agenda: EventData[]
 }

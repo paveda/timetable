@@ -1,5 +1,0 @@
-export { formatHtml } from './formatHtml.js'
-export { loadEvents } from './loadEvents.js'
-export { loadWeeks } from './loadWeeks.js'
-export { render } from './render.js'
-export { renderWeek } from './renderWeek.js'
