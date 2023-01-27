@@ -3,11 +3,25 @@ export type DayData = {
   agenda: EventData[]
 }
 
+export type EventColor =
+  | 'red'
+  | 'pink'
+  | 'grape'
+  | 'violet'
+  | 'indigo'
+  | 'blue'
+  | 'cyan'
+  | 'teal'
+  | 'green'
+  | 'lime'
+  | 'yellow'
+  | 'orange'
+
 export type EventData = {
   name: string
   start: number
   end: number
-  colour?: string
+  color?: EventColor
   tags?: string[]
 }
 

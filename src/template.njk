@@ -32,7 +32,7 @@
 
     <main class="timetable">
 
-      <aside class="gutter">
+      <aside class="timetable__gutter gutter">
         <ul class="gutter__list">
           {% for hour in range(week.timeRange[0], week.timeRange[1]) %}
             <li class="gutter__item">
@@ -60,10 +60,18 @@
                         top: calc({{ (event.start - week.timeRange[0]) * 60 }} * var(--m));
                         height: calc(var(--m) * (60 * {{ event.end - event.start }}));
                         width: 100%;
-                        background-color: {{ event.colour | default('green', true) }};
+                        background-color: {{ 'var(--oc-' + event.color + '-1);' | default('green', true) }};
                       "
                     >
-                      {{ event.name }}
+                      <div
+                        class="event__color-label"
+                        style="
+                          background-color: {{ 'var(--oc-' + event.color + '-4);' | default('green', true) }};
+                        "
+                      ></div>
+                      <div class="event__content">
+                        {{ event.name | capitalize }}
+                      </div>
                     </div>
 
                   {% endfor %}

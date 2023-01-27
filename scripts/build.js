@@ -4,7 +4,6 @@
 
 import { join } from 'node:path'
 import { writeFile } from 'node:fs/promises'
-import { format } from 'prettier'
 import nunjucks from 'nunjucks'
 import { loaddir } from './loaddir.js'
 import { loadModuleDefaultExport, loadText } from './loaders.js'
