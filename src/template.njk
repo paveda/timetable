@@ -5,12 +5,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <script type="module" src="{{ id }}.js"></script>
+  <script type="module" src="app.js" defer></script>
   <title>Timetable</title>
 </head>
 
 <body>
   <div class="app">
+
+    <div
+      class="timeline"
+      data-from="{{ week.timeRange[0] }}"
+      data-to="{{ week.timeRange[1] }}"
+    ></div>
 
     <header class="app__header main-header">
       <nav class="main-header__nav main-nav">

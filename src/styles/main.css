@@ -1,12 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap');
+@import "colors.css";
+
 :root {
   font-size: inherit;
-  --m: calc(100% / 16 / 60);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: 'Inter';
 }
 
 html,
@@ -24,7 +30,7 @@ body,
   display: flex;
   flex-direction: column;
   gap: 1px;
-  background-color: gray;
+  background-color: var(--oc-gray-6);
 }
 
   .app__header {
@@ -41,7 +47,7 @@ body,
   justify-content: space-between;
   align-items: center;
 
-  background-color: black;
+  background-color: var(--oc-gray-9);
 }
   
   .main-header__nav {
@@ -81,14 +87,17 @@ body,
   gap: 1px;
 }
 
+  .timetable__gutter {
+    margin-block-start: 36px;
+  }
+
 
 
 /* 
   Gutter
 */
 .gutter {
-  margin-block-start: 24px;
-  background-color: whitesmoke;
+  background-color: var(--oc-gray-1);
   width: 24px;
 }
 
@@ -103,7 +112,7 @@ body,
   .gutter__item {
     flex: 1;
     text-align: center;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid var(--oc-gray-6);
   }
 
 
@@ -127,7 +136,6 @@ body,
   .week__item {
     flex: 1;
     height: 100%;
-    background-color: lightgray;
   }
 
 
@@ -137,17 +145,21 @@ body,
 */
 .day {
   height: 100%;
+  background-color: var(--oc-gray-3);
 }
 
   .day__title {
-    height: 24px;
-    text-align: center;
-    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    border-bottom: 1px solid var(--oc-gray-6);
+    overflow: hidden;
   }
 
   .day__agenda {
     position: relative;
-    height: calc(100% - 24px);
+    height: calc(100% - 36px);
   }
 
 
@@ -156,8 +168,17 @@ body,
   Event
 */
 .event {
+  display: flex;
   position: absolute;
 }
+
+  .event__content {
+    padding: 1em;
+  }
+  .event__color-label {
+    height: 100%;
+    width: 6%;
+  }
 
 
 
