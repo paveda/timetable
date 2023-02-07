@@ -1,0 +1,22 @@
+{% macro event(color, start, duration, name) %}
+
+  <div
+    class="event"
+    style="
+      top: calc({{ start }} * var(--m));
+      height: calc(var(--m) * (60 * {{ duration }}));
+      width: 100%;
+      background-color: {{ 'var(--oc-' + color + '-1);' | default('green', true) }};
+    "
+  >
+    <div
+      class="event__color-label"
+      style="background-color: {{ 'var(--oc-' + color + '-4);' | default('green', true) }};"
+    ></div>
+
+    <div class="event__content">
+      {{ name | capitalize }}
+    </div>
+  </div>
+
+{% endmacro %}

@@ -1,0 +1,9 @@
+<aside class="timetable__gutter gutter">
+  <ul class="gutter__list">
+    {% for hour in range(minTime, maxTime) %}
+      <li class="gutter__item">
+        {{ hour }}
+      </li>
+    {% endfor %}
+  </ul>
+</aside>

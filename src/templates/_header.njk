@@ -1,0 +1,17 @@
+<header class="app__header main-header">
+  <nav class="main-header__nav main-nav">
+    <ul class="main-nav__list">
+      {% for page in pageList %}
+        <li class="main-nav__item">
+          <a class="main-nav__link" href="{{ page }}.html">
+            {% if page === "index" %}
+              Main
+            {% else %}
+              {{ page | capitalize }}
+            {% endif %}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,39 @@
+{% import "templates/_event.njk" as event %}
+{% extends "templates/_layout.njk"%}
+
+{% block content %}
+  {% include "templates/_timeline.njk" %}
+  {% include "templates/_header.njk" %}
+
+  <main class="timetable">
+    {% include "templates/_gutter.njk" %}
+    <div
+      class="week"
+      style="--m: calc(100% / {{ maxTime - minTime }} / 60);"
+    >
+      <ul class="week__list">
+        {% for name, day in days %}
+          <li class="week__item">
+            <div class="day {{ day.name }}">
+              <div class="day__title">
+                {{ day.title }}
+              </div>
+              <div class="day__agenda">
+                {% for eventData in day.agenda %}
+                  {{ event.event(
+                      eventData.color,
+                      (eventData.start - minTime) * 60,
+                      (end - eventData.start) * 60,
+                      eventData.name
+                    )
+                  }}
+                {% endfor %}
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    <div>
+  </main>
+
+{% endblock %}

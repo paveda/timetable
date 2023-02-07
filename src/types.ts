@@ -3,6 +3,8 @@ export type DayData = {
   agenda: EventData[]
 }
 
+export type TimeStr = `${number}h${number}m`
+
 export type EventColor =
   | 'red'
   | 'pink'
@@ -19,8 +21,8 @@ export type EventColor =
 
 export type EventData = {
   name: string
-  start: number
-  end: number
+  start: number | TimeStr
+  end: number | TimeStr
   color?: EventColor
   tags?: string[]
 }
