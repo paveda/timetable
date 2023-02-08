@@ -2,7 +2,7 @@
 
 /** @type {import('../../src/types').WeekData} */
 export default {
-  timeRange: [7, 23],
+  timeRange: [1, 24],
   days: {
     monday: {
       title: 'Понедельник',
@@ -67,7 +67,7 @@ export default {
       title: 'Пятница',
       agenda: [],
     },
-    suturday: {
+    saturday: {
       title: 'Суббота',
       agenda: [],
     },

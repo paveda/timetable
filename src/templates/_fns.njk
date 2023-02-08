@@ -1,0 +1,30 @@
+{% macro event(data) %}
+  <div
+    class="event"
+    style="
+      top: calc(var(--m) * {{ data.start }});
+      height: calc(var(--m) * {{ data.duration }});
+      background-color: {{ 'var(--oc-' + data.color + '-1);' }};
+    "
+  >
+    <div
+      class="event__color-label"
+      style="background-color: {{ 'var(--oc-' + data.color + '-4);' }};"
+    ></div>
+
+    <div
+      class="event__content"
+      style="color: {{ 'var(--oc-' + data.color + '-9);' }}"
+    >
+      <div class="event__title">
+        {{ data.name | capitalize }}
+      </div>
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro dayHeader(data) %}
+  <div class="day__header">
+    {{ data.title }}
+  </div>
+{% endmacro %}

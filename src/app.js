@@ -2,8 +2,8 @@
 const timeline = document.querySelector('.timeline')
 const gutter = document.querySelector('.gutter__list')
 
-const RANGE_START = parseInt(timeline.dataset.from)
-const RANGE_END = parseInt(timeline.dataset.to)
+const MIN_TIME = parseInt(timeline.dataset.from)
+const MAX_TIME = parseInt(timeline.dataset.to)
 
 const date = new Date(Date.now())
 const hours = date.getHours()
@@ -13,10 +13,10 @@ const gutterClientRect = gutter.getBoundingClientRect()
 
 // TODO: Слишком много магических цифр
 
-const pixelsInMinute = gutterClientRect.height / (RANGE_END - RANGE_START) / 60;
+const pixelsInMinute = gutterClientRect.height / (MAX_TIME - MIN_TIME) / 60;
 
-if (hours > RANGE_START && hours < RANGE_END) {
-  let position = ((hours * 60) - (RANGE_START * 60) + minutes) * pixelsInMinute + 24 + 36
+if (hours > MIN_TIME && hours < MAX_TIME) {
+  let position = ((hours * 60) - (MIN_TIME * 60) + minutes) * pixelsInMinute + 24 + 36
 
   timeline.style.top = position + 'px'
 
@@ -25,3 +25,23 @@ if (hours > RANGE_START && hours < RANGE_END) {
     timeline.style.top = position + 'px'
   }, 1000 * 60)
 }
+const WEEK_DAYS = [
+  'monday',
+  'tuesday',
+  'wednesday',
+  'thursday',
+  'friday',
+  'saturday',
+  'sunday',
+]
+
+function getTodaysName() {
+  const today = new Date(Date.now()).getDay()
+
+  return WEEK_DAYS.at(today)
+}
+
+const today = getTodaysName()
+
+const element = document.querySelector('.' + today)
+element.classList.add('day_active')

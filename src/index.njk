@@ -1,7 +1,7 @@
-{% import "templates/_event.njk" as event %}
+{% import "templates/_fns.njk" as fns %}
 {% extends "templates/_layout.njk"%}
 
-{% block content %}
+{% block app %}
   {% include "templates/_timeline.njk" %}
   {% include "templates/_header.njk" %}
 
@@ -14,19 +14,19 @@
       <ul class="week__list">
         {% for name, day in days %}
           <li class="week__item">
-            <div class="day {{ day.name }}">
-              <div class="day__title">
-                {{ day.title }}
-              </div>
+            <div class="day {{ name }}">
+              {{ fns.dayHeader(day) }}
+
               <div class="day__agenda">
-                {% for eventData in day.agenda %}
-                  {{ event.event(
-                      eventData.color,
-                      (eventData.start - minTime) * 60,
-                      (end - eventData.start) * 60,
-                      eventData.name
-                    )
-                  }}
+                {% for event in day.agenda %}
+                  {% set eventData = {
+                    start: getTimeInMinutes(event.start) - (minTime * 60),
+                    duration: getTimeInMinutes(event.end) - getTimeInMinutes(event.start),
+                    color: event.color,
+                    name: event.name
+                  }%}
+
+                  {{ fns.event(eventData) }}
                 {% endfor %}
               </div>
             </div>

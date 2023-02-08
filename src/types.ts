@@ -5,6 +5,15 @@ export type DayData = {
 
 export type TimeStr = `${number}h${number}m`
 
+export type DayName =
+  | 'monday'
+  | 'tuesday'
+  | 'wednesday'
+  | 'thursday'
+  | 'friday'
+  | 'saturday'
+  | 'sunday'
+
 export type EventColor =
   | 'red'
   | 'pink'
@@ -29,5 +38,7 @@ export type EventData = {
 
 export type WeekData = {
   timeRange: [number, number]
-  days: Record<string, DayData>
+  days: {
+    [K in DayName]?: DayData
+  }
 }

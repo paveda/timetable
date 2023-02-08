@@ -9,6 +9,7 @@ import { loaddir } from './loaddir.js'
 import { loadModuleDefaultExport, loadText } from './loaders.js'
 import { EVENTS_DIR, WEEKS_DIR, OUT_DIR, SRC_PATH } from '../config/constants.js'
 import { copydir } from './copydir.js'
+import { getTimeInMinutes } from './time.js'
 
 nunjucks.configure(resolve('src'), { autoescape: true })
 
@@ -22,9 +23,11 @@ const pages = [...weeks.keys()]
 
 for (const [name, week] of weeks) {
   const html = nunjucks.render('index.njk', {
+    pageList: pages,
     minTime: week.timeRange[0],
     maxTime: week.timeRange[1],
     days: week.days,
+    getTimeInMinutes,
   })
 
   await writeFile(join(OUT_DIR, name + '.html'), html)

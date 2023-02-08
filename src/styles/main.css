@@ -30,7 +30,7 @@ body,
   display: flex;
   flex-direction: column;
   gap: 1px;
-  background-color: var(--oc-gray-6);
+  background-color: var(--oc-gray-4);
 }
 
   .app__header {
@@ -84,7 +84,7 @@ body,
 .timetable {
   flex: 1;
   display: flex;
-  gap: 1px;
+  gap: 0.5rem;
 }
 
   .timetable__gutter {
@@ -128,7 +128,7 @@ body,
   .week__list {
     display: flex;
     justify-content: space-between;
-    gap: 1px;
+    gap: 0.5rem;
     height: 100%;
     list-style: none;
   }
@@ -145,10 +145,15 @@ body,
 */
 .day {
   height: 100%;
-  background-color: var(--oc-gray-3);
+  padding-inline: 0.25rem;
+  background-color: var(--oc-gray-2);
+  opacity: 0.7;
 }
+  .day_active {
+    opacity: 1;
+  }
 
-  .day__title {
+  .day__header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -170,15 +175,30 @@ body,
 .event {
   display: flex;
   position: absolute;
+  gap: 0.25rem;
+  width: 100%;
+  border: 0.125rem solid transparent;
+  border-radius: 0.25rem;
 }
-
-  .event__content {
-    padding: 1em;
-  }
   .event__color-label {
     height: 100%;
-    width: 6%;
+    width: 6px;
+    border-radius: 0.125rem;
   }
+
+  .event__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .event__title {
+    font-size: 1rem;
+  }
+
+  .event__tags {}
+  
 
 
 
