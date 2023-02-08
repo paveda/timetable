@@ -180,6 +180,10 @@ body,
   border: 0.125rem solid transparent;
   border-radius: 0.25rem;
 }
+  .event_active {
+    border: 0.125rem solid var(--oc-green-6);
+  }
+
   .event__color-label {
     height: 100%;
     width: 6px;

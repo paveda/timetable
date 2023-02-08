@@ -17,5 +17,11 @@ export default {
         { name: 'Work', start: '11h45m', end: '19h30m', color: 'blue' },
       ]
     },
+    thursday: {
+      title: 'Thursday',
+      agenda: [
+        { name: 'Work', start: '11h45m', end: '19h30m', color: 'blue' },
+      ]
+    },
   }
 }

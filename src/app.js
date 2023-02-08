@@ -1,3 +1,5 @@
+// @ts-check
+
 /** @type {HTMLDivElement} */
 const timeline = document.querySelector('.timeline')
 const gutter = document.querySelector('.gutter__list')
@@ -44,4 +46,20 @@ function getTodaysName() {
 const today = getTodaysName()
 
 const element = document.querySelector('.' + today)
-element.classList.add('day_active')
+if (element) {
+  element.classList.add('day_active')
+
+  const dayAgenda = element.querySelector('.day__agenda')
+  
+  if (dayAgenda) {
+    const trect = timeline.getBoundingClientRect()
+
+    for (const child of dayAgenda.children) {
+      /** @type {DOMRect} */
+      const rect = child.getBoundingClientRect()
+      if (rect.top < trect.top && rect.bottom > trect.bottom) {
+        child.classList.add('event_active')
+      }
+    }
+  }
+}
